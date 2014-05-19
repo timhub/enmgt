@@ -11,11 +11,13 @@
 			"captions": [
 				{
 					"sentence": "word word word!",
-					"time": "1000"
+					"startTime": "5",
+					"endTime": "8"
 				},
 				{
 					"sentence": "word word word!",
-					"time": "1100"
+					"startTime": "8",
+					"endTime": "18"
 				}
 				
 			]
@@ -31,11 +33,13 @@
 			"captions": [
 				{
 					"sentence": "word word word!",
-					"time": "1000"
+					"startTime": "8",
+					"endTime": "18"
 				},
 				{
 					"sentence": "word word word!",
-					"time": "1100"
+					"startTime": "8",
+					"endTime": "18"
 				}
 				
 			]
