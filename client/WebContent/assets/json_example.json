@@ -1,0 +1,48 @@
+{
+	"data": [
+		{
+			"name": "Prison Break",
+			"year": "2005",
+			"area": "USA",
+			"cast": [
+				"Wentworth Miller",
+				"Dominic Purcell"
+			],
+			"captions": [
+				{
+					"sentence": "word 1 click me!",
+					"startTime": "5",
+					"endTime": "8"
+				},
+				{
+					"sentence": "word 2 click me!",
+					"startTime": "18",
+					"endTime": "22"
+				}
+				
+			]
+		},
+		{
+			"name": "Prison Break II",
+			"year": "2005",
+			"area": "USA",
+			"cast": [
+				"Wentworth Miller",
+				"Dominic Purcell"
+			],
+			"captions": [
+				{
+					"sentence": "this is a word!",
+					"startTime": "32",
+					"endTime": "38"
+				},
+				{
+					"sentence": "word word word!",
+					"startTime": "25",
+					"endTime": "29"
+				}
+				
+			]
+		}
+	]
+}
