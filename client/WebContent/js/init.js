@@ -1,3 +1,8 @@
+var timeoutFn = function() {
+    clearTimeout(timeoutFn);
+    $( "#sampleVideo")[0].pause();
+};
+
 $(function() {
     //parse json
     var parseJson = function(json) {
@@ -17,8 +22,8 @@ $(function() {
     
     var renderSentence = function(sentence) {
         $(sentence).each(function(index, elem) {
-            $('<div style="cursor: pointer;">' + elem.sentence + '<div>').appendTo($("#sentenceArea")).click(function(){    
-                openVideo('panda.mp4', elem.startTime, elem.endTime)
+            $('<div style="cursor: pointer;">' + elem.sentence + '----from ' + elem.startTime + ' seconds' + '----to ' + elem.endTime + ' seconds<div>').appendTo($("#sentenceArea")).click(function(){    
+                openVideo('panda.mp4', elem.startTime, elem.endTime);
             });
         });
         
@@ -38,7 +43,7 @@ $(function() {
 });
 
 function openVideo(videoName, startSec, endSec) {
-    $( "#dialog" ).show().dialog({width: "500px", height: "400px", modal: true});
+    $( "#dialog" ).show().dialog({width: "500px", height: "400px", modal: false});
     $( "#sampleVideo").empty();
     $( "#sampleVideo").append("<source src='" + videoName + "'>");
     $( "#sampleVideo").on('loadedmetadata', function() {
@@ -46,21 +51,15 @@ function openVideo(videoName, startSec, endSec) {
         sampleVideo.currentTime = startSec;
         sampleVideo.play();
         
-        timeout = setTimeout(function() {
-            clearTimeout(timeout);
-            sampleVideo.pause();
-        }, 1000 * (endSec - startSec));
+        setTimeout(timeoutFn, 1000 * (endSec - startSec));
         
         $('#replay').unbind('click');
         $('#replay').click(function() {
-            clearTimeout(timeout);
+            clearTimeout(timeoutFn);
             sampleVideo.currentTime = startSec;
             sampleVideo.play();
             
-            timeout = setTimeout(function() {
-                clearTimeout(timeout);
-                sampleVideo.pause();
-            }, 1000 * (endSec - startSec));
+            setTimeout(timeoutFn, 1000 * (endSec - startSec));
         });
     });
 }
