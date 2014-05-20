@@ -42,8 +42,19 @@ $(function() {
     //search keyword from json
 });
 
+function hideGrayPanel(){
+    $("#graypanel").hide();
+}
+
 function openVideo(videoName, startSec, endSec) {
-    $( "#dialog" ).show().dialog({width: "500px", height: "400px", modal: false});
+    $("#graypanel").show();
+    $( "#dialog" ).show().dialog({
+        width: "500px", 
+        height: "400px", 
+        modal: false, 
+        close: function(event,ui){
+            $("#graypanel").hide();
+        }});
     $( "#sampleVideo").empty();
     $( "#sampleVideo").append("<source src='" + videoName + "'>");
     $( "#sampleVideo").on('loadedmetadata', function() {

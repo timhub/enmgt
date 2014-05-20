@@ -4,10 +4,10 @@
 <meta charset="utf-8" />
 
 <link href="css/jquery-ui.css" rel="stylesheet" type="text/css"/>
+<link href="css/common.css" rel="stylesheet" type="text/css"/>
 
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript" src="js/jquery-ui.js"></script>
-
 <script type="text/javascript" src="js/init.js"></script>
 <style>
 
@@ -15,12 +15,15 @@
 height: 400px !important;
 }
 </style>
+
 </head>
-<body>
+<body style="z-index:-111">
 
 	<div id="sentenceArea">	
 	</div>
-	
+	<div id="graypanel" class="grayfilter transparent">
+		
+	</div>
 	<div id="dialog" style="display: none;">
 		<video controls width='400' height='300' id='sampleVideo'></video>
 		<button id="replay">replay</button>
