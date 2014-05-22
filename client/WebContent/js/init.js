@@ -23,7 +23,7 @@ $(function() {
     var renderSentence = function(sentence) {
         $(sentence).each(function(index, elem) {
             $('<div style="cursor: pointer;">' + elem.sentence + '----from ' + elem.startTime + ' seconds' + '----to ' + elem.endTime + ' seconds<div>').appendTo($("#sentenceArea")).click(function(){    
-                openVideo('panda.mp4', elem.startTime, elem.endTime);
+                openVideo('a.mp4', elem.startTime, elem.endTime);
             });
         });
         
@@ -48,15 +48,15 @@ function hideGrayPanel(){
 
 function openVideo(videoName, startSec, endSec) {
     $("#graypanel").show();
-    $( "#dialog" ).show().dialog({
-        width: "500px", 
-        height: "400px", 
-        modal: false, 
-        close: function(event,ui){
-            $("#graypanel").hide();
-        }});
+    // $( "#dialog" ).show().dialog({
+    //     width: "626px", 
+    //     height: "383px", 
+    //     modal: false, 
+    //     close: function(event,ui){
+    //         $("#graypanel").hide();
+    //     }});
     $( "#sampleVideo").empty();
-    $( "#sampleVideo").append("<source src='" + videoName + "'>");
+    $( "#sampleVideo").append("<source src='" + videoName + "' type='video/mp4'>");
     $( "#sampleVideo").on('loadedmetadata', function() {
         var sampleVideo = this;
         sampleVideo.currentTime = startSec;

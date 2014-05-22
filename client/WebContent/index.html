@@ -9,12 +9,6 @@
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript" src="js/jquery-ui.js"></script>
 <script type="text/javascript" src="js/init.js"></script>
-<style>
-
-#dialog {
-height: 400px !important;
-}
-</style>
 
 </head>
 <body style="z-index:-111">
@@ -22,11 +16,15 @@ height: 400px !important;
 	<div id="sentenceArea">	
 	</div>
 	<div id="graypanel" class="grayfilter transparent">
-		
+		<div id="content">
+			<div id="content_left">
+				<div id="video">
+					<video controls width='626' height='383' id='sampleVideo'></video>
+					<button id="replay">replay</button>
+				</div>
+			</div>
+		</div>
 	</div>
-	<div id="dialog" style="display: none;">
-		<video controls width='400' height='300' id='sampleVideo'></video>
-		<button id="replay">replay</button>
-	</div>
+	
 </body>
 </html>
