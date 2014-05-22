@@ -15,11 +15,73 @@
 height: 400px !important;
 }
 </style>
-
+<style>
+* {
+	margin: 0px;
+	padding: 0px;
+	font-size: 14px;
+}
+body{
+	background-color: #eee;
+}
+#main  {
+	width:1050px;
+	height:100%;
+	margin: 0 auto;
+	position: relative;
+}
+#left {
+	width:325px;
+	height: 100%;
+	float: left;
+	
+} 
+#right {
+	width: 674px;
+	float: left;
+	margin: 25px;
+	height: 100%;
+	border-left: 1px solid black;
+}
+#logo {
+	width: 260px;
+	height: 86px;
+	margin: 45px 0px;
+	background-image:url(assets/logo.png)
+}
+.movie {
+}
+.sentenceArea {
+	margin-left: 200px;
+	padding: 20px;
+}
+.sentence {
+	line-height: 24px;
+	font-size: 14px;
+	color: #333333;
+}
+.thumbnail {
+	width: 180px;
+	height: 120px;
+	background-image: url(assets/Koala.jpg);
+	background-size: contain;
+}
+</style>
 </head>
 <body style="z-index:-111">
-
-	<div id="sentenceArea">	
+	<div id="main">
+		<div id="left">
+			<div id="logo"></div>
+			<div id="search">
+				<input id="keyword" type="text"></input>
+				<button onclick="search();">Search</button>
+			</div>
+		</div>
+		
+		<div id="right">
+			<div id="sentenceArea">	
+			</div>
+		</div>
 	</div>
 	<div id="graypanel" class="grayfilter transparent">
 		
