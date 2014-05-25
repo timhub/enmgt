@@ -15,8 +15,7 @@
 #dialog {
 height: 400px !important;
 }
-</style>
-<style>
+
 * {
 	margin: 0px;
 	padding: 0px;
@@ -92,8 +91,25 @@ body{
 					<button id="replay">replay</button>
 				</div>
 			</div>
+			<div id="content_right">
+				
+			</div>
+		</div>
+		<div id="closeBtn">
+			
 		</div>
 	</div>
 	
 </body>
+
+<script type="text/javascript">
+	$('#closeBtn').click(function (){
+		var video = $( "#sampleVideo")[0];
+		if (!video.paused) {
+			$( "#sampleVideo")[0].pause();
+			video.currentTime = 0;
+		};
+		$('#graypanel').hide();
+	});
+</script>
 </html>

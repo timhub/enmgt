@@ -1,3 +1,16 @@
+html{
+	/*Scroll bar style area*/
+	scrollbar-arrow-color: #555;
+	scrollbar-face-color: #999;
+	scrollbar-3dlight-color: #aaa;
+	scrollbar-highlight-color: #444;
+	scrollbar-shadow-color: #333;
+	scrollbar-darkshadow-color: #222;
+	scrollbar-track-color: #555;
+
+	scrollbar-base-color: #555; 
+}
+
 body{
 	height: 100%;
 	width: 100%;
@@ -19,10 +32,7 @@ body{
 }
 
 .transparent {
-	filter:alpha(opacity=80);
-	-moz-opacity:0.8;
-	-khtml-opacity: 0.8;
-	opacity: 0.8;
+	background-color: rgba(0,0,0,0.8);
 }
 
 #dialog{
@@ -30,13 +40,16 @@ body{
 }
 
 #content{
+	background-color: rgba(0,0,0,0.4);
 	position: absolute;
 	height: 664px !important;
 	width: 1000px !important;
 	margin: auto;
 	padding: 0;
-	line-height: 100%;
-	top: 50px;
+	top: 50%;
+	left: 50%;
+	margin-left: -500px;
+	margin-top: -332px;
 }
 
 #content_left{
@@ -45,4 +58,39 @@ body{
 	margin-left: 0;
 	margin-top: 0;
 	padding: 0;
+	float: left;
+}
+
+#content_right{
+	height: 100%;
+	width: 350px;
+	margin-right: 0px;
+	margin-left: 650px;
+	display: block;
+	background-color: #444;
+
+	overflow-x: hidden;
+	overflow-y: scroll;
+
+}
+
+#closeBtn{
+	background-image: url(../assets/close.png);
+	width: 50px;
+	height: 50px;
+	position: absolute;
+	top: 25px;
+	right: 25px;
+}
+
+#closeBtn:hover{
+	cursor: pointer;
+	background-color: #777;
+}
+
+.popupsentence{
+	color: #ccc;
+	line-height: 24px;
+	font-size: 14px;
+	padding-left: 16px;
 }
