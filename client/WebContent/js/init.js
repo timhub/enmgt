@@ -63,7 +63,11 @@ var renderSentence = function(sentence) {
                 //openVideo('a.mp4', elem.startTime, elem.endTime);
             });
             $('<div class="sentence" style="">' + elem.chinese + '</div>').appendTo(sentenceArea);
-            $('<div class="operation" style="color: #777; margin-top: 4px;margin-bottom: 34px;"><div style="margin-right: 5px;display: inline-block;width:16px;height:16px;background-image:url(assets/fav.png)"></div><span>收藏例句</span><div style="margin-left: 15px;margin-right: 5px;display: inline-block;width:16px;height:16px;background-image:url(assets/play.png)"></div><span style="cursor: pointer;" onclick="openVideo(\'a.mp4\', ' + elem.startTime + ',' + elem.endTime+'); showContentPanelSentence();">播放例句</span></div>').appendTo(sentenceArea);
+            var operation = $('<div class="operation" style="color: #777; margin-top: 4px;margin-bottom: 34px;"><div style="margin-right: 5px;display: inline-block;width:16px;height:16px;background-image:url(assets/fav.png)"></div><span>收藏例句</span><div style="margin-left: 15px;margin-right: 5px;display: inline-block;width:16px;height:16px;background-image:url(assets/play.png)"></div></div>').appendTo(sentenceArea);
+            $('<span style="cursor: pointer;">播放例句</span>').appendTo(operation).click(function(){    
+                openVideo(sentence, movieIndex, index);
+                //showContentPanelSentence();
+            });;
         });
         $('<div style="height: 1px; background-color: #333;width: 100%;"></div>').appendTo($("#sentenceArea"));
     });
