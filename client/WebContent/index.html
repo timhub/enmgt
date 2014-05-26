@@ -22,7 +22,7 @@ height: 400px !important;
 	font-size: 14px;
 }
 body{
-	background-color: #eee;
+	background-color: #efefef;
 }
 #main  {
 	width:1050px;
@@ -49,7 +49,26 @@ body{
 	margin: 45px 0px;
 	background-image:url(assets/logo.png)
 }
+#keyword {
+	width: 300px;
+	height: 40px;
+	background-color: #ddd;
+	font-size: 16px;
+	color: #333;
+	padding-left: 5px;
+	border: 0 !important;
+}
+#searchBtn {
+	width: 24px;
+	height: 24px;
+	position: relative;
+	background-image: url(assets/sousuo.png);
+	top: -32px;
+	left: 270px;
+}
+
 .movie {
+	min-height: 230px;
 }
 .sentenceArea {
 	margin-left: 200px;
@@ -73,8 +92,8 @@ body{
 		<div id="left">
 			<div id="logo"></div>
 			<div id="search">
-				<input id="keyword" type="text"></input>
-				<button onclick="search();">Search</button>
+				<input id="keyword" type="text" onkeydown="searchKeyDown(event)"></input>
+				<div id="searchBtn" onclick="search();"></div>
 			</div>
 		</div>
 		
