@@ -2,16 +2,25 @@ var timeoutFn = function() {
     clearTimeout(timeoutFn);
     $( "#sampleVideo")[0].pause();
 };
-var json = '', resultSentence = null;
+var json = '', resultSentence = null, filterArea = [],filterYear = [];
 
 $(function() {
-    var renderSentence = function(sentence) {
-        $(sentence).each(function(index, elem) {
-            $('<div style="cursor: pointer;">' + elem.sentence + '----from ' + elem.startTime + ' seconds' + '----to ' + elem.endTime + ' seconds<div>').appendTo($("#sentenceArea")).click(function(){    
-                openVideo('a.mp4', elem.startTime, elem.endTime);
-            });
+    var getFilterData = function() {
+        $(json).each(function(index, elem) {
+            if(filterArea.indexOf(elem.area) < 0) {
+                filterArea.push(elem.area);
+            }
+            if(filterYear.indexOf(elem.year) < 0) {
+                filterYear.push(elem.year);
+            }
         });
-        
+            
+        $(filterArea.sort()).each(function(index, elem) {
+            $('<option value="' + elem + '">' + elem + '</option>').appendTo('#filterArea');
+        });
+        $(filterYear.sort()).each(function(index, elem) {
+            $('<option value="' + elem + '">' + elem + '</option>').appendTo('#filterYear   ');
+        });
     };
     
     $.ajax({
@@ -20,12 +29,10 @@ $(function() {
         dataType: "json"
       }).done(function(data) {
           json = data.data;
-          /*var sentence = parseJson(data.data);
-          renderSentence(sentence);*/
+          getFilterData();
       }).fail(function( jqXHR, textStatus ) {
           alert( "Request failed: " + textStatus );
       });
-    //search keyword from json
 });
 
 //parse json
@@ -35,6 +42,27 @@ var parseJson = function() {
     for(var i = 0; i < json.length; i++) {
         var video = json[i];
         video.sentence = [];
+        if($('#filterArea').val()) {
+            if(video.area != $('#filterArea').val()) {
+                continue;
+            }
+        }
+        if($('#filterYear').val()) {
+            if(video.year != $('#filterYear').val()) {
+                continue;
+            }
+        }
+        if($('#filterCast').val()) {
+            var hasCast = false;
+            $(video.cast).each(function(index, elem) {
+                if(elem.indexOf($('#filterCast').val()) >= 0) {
+                    hasCast = true;
+                }
+            });
+            if(!hasCast) {
+                continue;
+            }
+        }
         var captions = video.captions;
         for(var j = 0; j < captions.length; j++) {
             if(captions[j].sentence.indexOf(keyword) >= 0) {
@@ -53,6 +81,9 @@ var parseJson = function() {
 
 var renderSentence = function(sentence) {
     $("#sentenceArea").empty();
+    if(sentence.length <= 0) {
+        $("#sentenceArea").append('<div style="margin: 25px;">No Movie is found.</div>');
+    }
     $(sentence).each(function(index, elem) {
         var movieIndex = index;
         var movie = $('<div class="movie"><div style="float: left;padding: 20px;"><div class="thumbnail"></div><div style="color: #333; margin-top:12px;">' + elem.name + '</div></div></div>').appendTo($("#sentenceArea"));
@@ -77,6 +108,7 @@ function search() {
     if(!$('#keyword').val() || $('#keyword').val().length <= 2) {
         return;
     }
+    $('#searchWord').html($('#keyword').val());
     var sentence = parseJson();
     renderSentence(sentence);
 }
