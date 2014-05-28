@@ -9,6 +9,8 @@ html{
 	scrollbar-track-color: #555;
 
 	scrollbar-base-color: #555; 
+
+	height: 100%;
 }
 
 body{
@@ -41,7 +43,7 @@ body{
 
 #content{
 	background-color: rgba(0,0,0,0.4);
-	position: absolute;
+	position: fixed;
 	height: 664px !important;
 	width: 1000px !important;
 	margin: auto;
@@ -93,4 +95,15 @@ body{
 	line-height: 24px;
 	font-size: 14px;
 	padding-left: 16px;
+}
+
+.contentSentenceArea{
+	margin-left: 16px;
+	padding: 20 0 0 0;
+}
+
+.contentSentence{
+	line-height: 24px;
+	font-size: 14px;
+	color: #eee;
 }

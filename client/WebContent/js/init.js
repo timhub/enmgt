@@ -114,22 +114,25 @@ function search() {
 }
 
 function showContentPanelSentence(movieIndex){
-    sentence = parseJson();
-    renderPopupSentence(sentence);
+    var sentence = parseJson();
+    renderPopupSentence(sentence, movieIndex);
 }
 
 var renderPopupSentence = function (sentence, movieIndex){
     var result = sentence[movieIndex];
     $('#content_right').empty();
-    $(result).each(function(index, elem) {
-        var sentenceArea = $('#content_right');
-        $(elem.result).each(function(index, elem) {
-            $('<div style="cursor: pointer;" class="popupsentence">' + elem.sentence + '----from ' + elem.startTime + ' seconds' + '----to ' + elem.endTime + ' seconds<div>').appendTo(sentenceArea).click(function(){    
-                openVideo(result, movieIndex, elem.endTime);
-            });
-            $('<div class="popupsentence" style="">' + elem.chinese + '</div>').appendTo(sentenceArea);
-            $('<div class="operation" style="color: #aaa; margin-top: 10px;margin-bottom: 34px; padding-left:16px;"><div style="margin-right: 5px;display: inline-block;width:16px;height:16px;background-image:url(assets/fav.png)"></div><span>收藏例句</span><div style="margin-left: 15px;margin-right: 5px;display: inline-block;width:16px;height:16px;background-image:url(assets/play.png)"></div><span style="cursor: pointer;" onclick="openVideo(\'a.mp4\', ' + elem.startTime + ',' + elem.endTime+')">播放例句</span></div>').appendTo(sentenceArea);
+    $(result.sentence).each(function(index, elem) {
+        var contentRightArea = $('#content_right');
+        var sentenceArea = $('<div class="contentSentenceArea"></div>').appendTo(contentRightArea);
+        $('<div style="cursor: pointer;" class="contentSentence">' + elem.sentence + '<div>').appendTo(sentenceArea).click(function(){    
+            openVideo(sentence, movieIndex, index);
+            //openVideo('a.mp4', elem.startTime, elem.endTime);
         });
+        $('<div class="contentSentence" style="">' + elem.chinese + '</div>').appendTo(sentenceArea);
+        var operation = $('<div class="operation" style="color: #fff; margin-top: 4px;margin-bottom: 34px;"><div style="margin-right: 5px;display: inline-block;width:16px;height:16px;background-image:url(assets/fav.png)"></div><span>收藏例句</span><div style="margin-left: 15px;margin-right: 5px;display: inline-block;width:16px;height:16px;background-image:url(assets/play.png)"></div></div>').appendTo(sentenceArea);
+        $('<span style="cursor: pointer;">播放例句</span>').appendTo(operation).click(function(){    
+            openVideo(sentence, movieIndex, index);
+        });;
         $('<div style="height: 1px; background-color: #333;width: 100%;"></div>').appendTo($("#sentenceArea"));
     });
 };
@@ -142,7 +145,10 @@ function searchKeyDown(event) {
 }
 
 function openVideo(result, movieIndex, sentenceIndex) {
+    var height = document.body.scrollHeight;
+    $("#graypanel").css("height", height);
     $("#graypanel").show();
+
     // $( "#dialog" ).show().dialog({
     //     width: "626px", 
     //     height: "383px", 
@@ -151,8 +157,11 @@ function openVideo(result, movieIndex, sentenceIndex) {
     //         $("#graypanel").hide();
     //     }});
     $( "#sampleVideo").empty();
+    $( "#sampleVideo")[0].load();
     $( "#sampleVideo").append("<source src='" + result[movieIndex].name + ".mp4' type='video/mp4'>");
     $( "#sampleVideo").on('loadedmetadata', function() {
+        var startSec = result[movieIndex].sentence[sentenceIndex].startTime;
+        var endSec = result[movieIndex].sentence[sentenceIndex].endSec;
         var sampleVideo = this;
         sampleVideo.currentTime = startSec;
         sampleVideo.play();
