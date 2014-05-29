@@ -74,6 +74,15 @@ var parseJson = function() {
                 }
                 
             }
+            if(captions[j].chinese.indexOf(keyword) >= 0) {
+                var temp = $.extend({}, captions[j]);
+                temp.chinese = temp.chinese.split(keyword)[0] + '<span style="color:#0099ff;">' + keyword + '</span>' + temp.chinese.split(keyword)[1];
+                video.sentence.push(temp);
+                if(movies.indexOf(video) < 0) {
+                    movies.push(video);
+                }
+                
+            }
         }
     }
     return movies;
@@ -105,7 +114,7 @@ var renderSentence = function(sentence) {
 };
 
 function search() {
-    if(!$('#keyword').val() || $('#keyword').val().length <= 2) {
+    if(!$('#keyword').val() || $('#keyword').val().length < 2) {
         return;
     }
     $('#searchWord').html($('#keyword').val());
