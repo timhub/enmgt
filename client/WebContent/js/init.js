@@ -65,7 +65,7 @@ var parseJson = function() {
         }
         var captions = video.captions;
         for(var j = 0; j < captions.length; j++) {
-            if(captions[j].sentence.indexOf(keyword) >= 0) {
+            if(captions[j].sentence.toUpperCase().indexOf(keyword.toUpperCase()) >= 0) {
                 var temp = $.extend({}, captions[j]);
                 temp.sentence = temp.sentence.split(keyword)[0] + '<span style="color:#0099ff;">' + keyword + '</span>' + temp.sentence.split(keyword)[1];
                 video.sentence.push(temp);
