@@ -169,13 +169,13 @@ function openVideo(result, movieIndex, sentenceIndex) {
     $( "#sampleVideo")[0].load();
     $( "#sampleVideo").append("<source src='" + result[movieIndex].name + ".mp4' type='video/mp4'>");
     $( "#sampleVideo").on('loadedmetadata', function() {
-        var startSec = result[movieIndex].sentence[sentenceIndex].startTime;
-        var endSec = result[movieIndex].sentence[sentenceIndex].endSec;
+        var startSec = result[movieIndex].sentence[sentenceIndex].startTime - 3;
+        var endSec = result[movieIndex].sentence[sentenceIndex].endTime;
         var sampleVideo = this;
         sampleVideo.currentTime = startSec;
         sampleVideo.play();
         
-        setTimeout(timeoutFn, 1000 * (endSec - startSec));
+        setTimeout(timeoutFn, 1000 * (endSec - startSec + 3));
         
         $('#replay').unbind('click');
         $('#replay').click(function() {

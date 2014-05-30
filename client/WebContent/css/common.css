@@ -80,7 +80,7 @@ body{
 	background-image: url(../assets/close.png);
 	width: 50px;
 	height: 50px;
-	position: absolute;
+	position: fixed;
 	top: 25px;
 	right: 25px;
 }
@@ -106,4 +106,18 @@ body{
 	line-height: 24px;
 	font-size: 14px;
 	color: #eee;
+}
+
+#replay{
+	border: 1px;
+	border-color: #aaa;
+	background-color: #777;
+	padding-bottom: 4px;
+	width: 626px;
+	color: #FFF;
+}
+
+#replay:hover{
+	background-color: #888;
+	cursor: pointer;
 }
