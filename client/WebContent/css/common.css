@@ -121,3 +121,17 @@ body{
 	background-color: #888;
 	cursor: pointer;
 }
+
+#movie_instruction{
+	overflow-y: scroll;
+	overflow-x: hidden;
+	color: #FFF;
+	padding-left: 24px;
+	padding-top: 16px;
+	margin-top: 16px;
+	height: 210px;
+}
+
+h1{
+	font-size: 36px;
+}

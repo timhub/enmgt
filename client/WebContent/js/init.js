@@ -147,6 +147,22 @@ var renderPopupSentence = function (sentence, movieIndex){
     });
 };
 
+
+function displayInstruction(movieIndex){
+    $('#movie_instruction').empty();
+    var sentence = parseJson();
+    var movie = sentence[movieIndex].name;
+    if (movie == "Gravity") {
+        $('<h1>Gravity</h1><span>地心引力</span></br></br></br><h2>《地心引力》讲述了一个在地球空间站工作的两名男宇航员和一个女宇航员出舱进行器械维修时，遭遇太空碎片袭击导致飞船爆炸事故的故事。由于其他同行全部丧生，所以这部在太空领域内的“密闭空间”式电影人物极少，几乎只有这两位主演，他们将一同面对宇宙的无垠和人类的孤独。</h2>').appendTo($('#movie_instruction'));
+    } else if(movie == "Total Recall"){
+        $('<h1>Total Recall</h1><span>全面回忆</span></br></br></br><h2>电影由伦·怀斯曼执导，马克·鲍姆贝克担任编剧，柯林·法瑞尔、凯特·贝金赛尔和杰西卡·贝尔联袂出演。影片于2012年10月20日在中国上映。影片改编自著名科幻小说家菲利普·迪克的小说《We Can Remember It for You Wholesale》，讲述道格拉斯·奎德是个普通工人，在一次虚拟旅行之后，奎德的记忆出现了问题，而他也变成了一个被人追杀的“逃犯”。在逃亡的过程中，他发现独裁者哈根的阴谋，在追求正义的过程中，奎德渐渐发现了自己的身份、自己的信仰和自己的命运。</h2>').appendTo($('#movie_instruction'));        
+    } else if(movie == "The Dark Knight Rises"){
+        $('<h1>The Dark Knight Rises</h1><span>黑暗骑士崛起</span></br></br></br><h2>《蝙蝠侠：黑暗骑士崛起》（The Dark Knight Rises）改编自DC漫画公司的经典超级英雄漫画《蝙蝠侠》，由克里斯托弗·诺兰执导，克里斯蒂安·贝尔，安妮·海瑟薇等主演，是诺兰执导的蝙蝠侠系列三部曲的最终章。前两部分别是2005年的《蝙蝠侠：侠影之谜》和2008年的《蝙蝠侠：黑暗骑士》。影片延续《蝙蝠侠：黑暗骑士》的质感和风格，运用IMAX摄影机进行拍摄，剧情设定为《蝙蝠侠：黑暗骑士》的八年后的冬天展开，描述了布鲁斯·韦恩与贝恩之间的对决。高谭市原本是从一个逐渐和平的城市，但贝恩把整个城市再度陷入乱局，使得韦恩再次以“蝙蝠侠”身份打击贝恩的罪恶，使两人展开了在高谭市的终极决战。影片于2012年7月20日在北美和英国上映。</h2>').appendTo($('#movie_instruction'));        
+    } else if(movie == "Skyfall"){
+        $('<h1>007:Skyfall</h1><span>007:大破天幕危机</span></br></br></br><h2>由于邦德参与的一个任务失败，军情六处被暴露在了危机之中，M女士也遭遇了质疑,面对这种情况，军情六处的明星特工007只有挺身而出，解决危机，而且，无论付出多大的代价，他一定要拯救出M女士并保全军情六处。作为007史上首部IMAX电影《007之大破天幕杀机》（Skyfall），已于2013年1月21日登陆中国。詹姆斯·邦德 -丹尼尔·克雷格饰 ：伊斯坦堡的任务失败后而失去踪影，外界推测他已身亡M夫人-朱迪·丹奇饰 ：邦德的上司，因为邦德失踪使北约卧底探员资料外泄受到情报安全委员会新主席马洛利的强烈质疑，遂成为ZF调查的对象马洛利 -拉尔夫·费因斯饰 ：情报安全委员会新主席赛菲茵 -贝纳尼丝·玛尔洛饰 ：协助邦德的神秘女子伊芙 -娜奥米·哈里斯饰：协助邦德的探员洛乌西法-哈维尔·巴登饰：在背后搞鬼的神秘人物</h2>').appendTo($('#movie_instruction'));            
+    }
+}
+
 function searchKeyDown(event) {
     e = event ? event :(window.event ? window.event : null); 
     if(e.keyCode==13){ 
@@ -158,6 +174,7 @@ function openVideo(result, movieIndex, sentenceIndex) {
     var height = document.body.scrollHeight;
     $("#graypanel").css("height", height);
     $("#graypanel").show();
+    displayInstruction(movieIndex);
 
     // $( "#dialog" ).show().dialog({
     //     width: "626px", 
