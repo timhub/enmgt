@@ -100,6 +100,7 @@ var renderSentence = function(sentence) {
         $(elem.sentence).each(function(index, elem) {
             $('<div style="cursor: pointer;" class="sentence">' + elem.sentence + '<div>').appendTo(sentenceArea).click(function(){    
                 openVideo(sentence, movieIndex, index);
+				 showContentPanelSentence(movieIndex);
                 //openVideo('a.mp4', elem.startTime, elem.endTime);
             });
             $('<div class="sentence" style="">' + elem.chinese + '</div>').appendTo(sentenceArea);
