@@ -95,7 +95,7 @@ var renderSentence = function(sentence) {
     }
     $(sentence).each(function(index, elem) {
         var movieIndex = index;
-        var movie = $('<div class="movie"><div style="float: left;padding: 20px;"><div class="thumbnail"></div><div style="color: #333; margin-top:12px;">' + elem.name + '</div></div></div>').appendTo($("#sentenceArea"));
+        var movie = $('<div class="movie"><div style="float: left;padding: 20px;"><div class="thumbnail"><img width="180" height="120" src="' + elem.name + '.jpg"></img></div><div style="color: #333; margin-top:12px;">' + elem.name + '</div></div></div>').appendTo($("#sentenceArea"));
         var sentenceArea = $('<div class="sentenceArea"></div>').appendTo(movie);
         $(elem.sentence).each(function(index, elem) {
             $('<div style="cursor: pointer;" class="sentence">' + elem.sentence + '<div>').appendTo(sentenceArea).click(function(){    
